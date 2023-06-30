@@ -1,0 +1,107 @@
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Handlee);
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+body {
+  background-image: url("http://weknowyourdreams.com/images/adventure/adventure-08.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: 0px 0px;
+}
+
+#header {
+  margin-top: 8%;
+}
+
+h1 {
+  padding-bottom: 0px;
+  margin-bottom: -5px;
+  font-size: 60px;
+  font-weight: 800;
+  font-family: Fjalla One;
+}
+
+input {
+  width: 40%;
+  opacity: 0.7;
+  padding: 5px;
+  margin: 10px;
+}
+button {
+  margin-top: -0.2%;
+}
+
+#footer{
+  padding: 10px;
+  background-color:rgba(0, 0, 0, 0.7);
+  position: relative;
+  top: 210px;
+}
+
+p {
+  font-family: Handlee;
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
+
+<div class="container-fluid">
+  <div id="header">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    
+    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <center><h1>You<span style="color: red">DOWNLOAD</span></h1></center>
+    <center><h4>Youtube video downloader</h4></center>
+    <form method="post">
+      {% csrf_token %}
+    <div id="input-link">
+      <center><input type="text" placeholder="enter video link " width="80" name="data"><button class="btn btn-danger">Download</button></center>
+    </div>
+  </div>
+  <center><p><strong>Go ahead.. </strong>Download any Desired video here</p>
+</div>  
+</form>
+<!-- <center><div id="footer" style="font-size: 25px; font-family: Handlee; color: white;">Download your video post link</div></center> -->
+    <!-- <script>
+
+$(document).ready(function() {
+  
+  $(".btn").click(function() {
+
+    $.ajax({
+       url:"https://cors-anywhere.herokuapp.com/" + $("input").val(),
+       type:'GET',
+       datatype: "jsonp",
+       crossDomain: true,
+       success: function(data){
+         if ($(data).filter('meta[property="og:video"]').attr("content") ) {
+           var downloadlink = $(data).filter('meta[property="og:video"]').attr("content");
+           var a = $("<a>")
+            .attr("href", downloadlink)
+            .attr("download", "video.mp4")
+            .appendTo("body");
+            a[0].click();
+            a.remove();
+         } else {
+           var downloadlink = $(data).filter('meta[property="og:image"]').attr("content");
+           var a = $("<a>")
+            .attr("href", downloadlink)
+            .attr("download", "img.png")
+            .appendTo("body");
+            a[0].click();
+            a.remove();
+         }
+           
+       }
+    });
+    
+  });
+  });
+
+        </script> -->
